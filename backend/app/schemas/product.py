@@ -1,17 +1,23 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
+
+from app.schemas.category import CategoryResponse
+from app.schemas.listing import ListingResponse
+from app.schemas.specification import ProductSpecificationResponse
 
 class ProductCreate(BaseModel):
-    name:str
-    asin:str | None=None
-    category:str | None=None
-    brand: str | None=None
+    name: str
+    asin: str | None = None
+    brand: str | None = None
+    category_id: int | None = None
 
 class ProductResponse(BaseModel):
-    id:int
-    name:str
-    asin:str | None
-    category:str | None
-    brand:str | None
+    model_config = ConfigDict(from_attributes=True)
 
-    class Config:
-        from_attributes=True
+    id: int
+    name: str
+    asin: str | None
+    brand: str | None
+    category_id: int | None
+    category: CategoryResponse | None = None
+    listings: list[ListingResponse] = Field(default_factory=list)
+    specifications: list[ProductSpecificationResponse] = Field(default_factory=list)

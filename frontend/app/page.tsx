@@ -1,15 +1,17 @@
-import { getProducts } from "@/lib/api";
+import AddProductForm from "@/components/AddProductForm";
+import { getCategories, getProducts } from "@/lib/api";
+import type { Product } from "@/types/product";
 
 export default async function Home() {
-  const data = await getProducts();
+  const [data, categories] = await Promise.all([getProducts(), getCategories()]);
 
   return (
     <main style={{ padding: "40px" }}>
       <h1>Product Comparison</h1>
 
-      <p>Data below is coming from the FastAPI backend.</p>
+      <AddProductForm categories={categories} />
 
-      {data.products.map((product: any) => (
+      {data.map((product: Product) => (
         <div
           key={product.id}
           style={{
@@ -22,23 +24,22 @@ export default async function Home() {
           <h2>{product.name}</h2>
 
           <p>
-            <strong>Seller:</strong> {product.seller}
+            <strong>Category:</strong> {product.category?.name ?? "Uncategorized"}
           </p>
 
           <p>
-            <strong>Price:</strong> ₹{product.price}
+            <strong>Brand:</strong> {product.brand ?? "-"}
           </p>
 
           <h3>Specifications</h3>
 
           <ul>
-            {Object.entries(product.specifications).map(
-              ([key, value]) => (
-                <li key={key}>
-                  <strong>{key}:</strong> {String(value)}
+            {product.specifications.map((specification) => (
+                <li key={specification.id}>
+                  <strong>{specification.specification_name}:</strong>{" "}
+                  {specification.specification_value}
                 </li>
-              )
-            )}
+            ))}
           </ul>
         </div>
       ))}

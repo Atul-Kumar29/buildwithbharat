@@ -19,8 +19,8 @@ def create_product(
     new_product=Product(
         name=product.name,
         asin=product.asin,
-        category=product.category,
-        brand=product.brand
+        brand=product.brand,
+        category_id=product.category_id
     )
 
     db.add(new_product)
