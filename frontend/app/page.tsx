@@ -1,48 +1,36 @@
 import AddProductForm from "@/components/AddProductForm";
-import { getCategories, getProducts } from "@/lib/api";
+import AuthPanel from "@/components/AuthPanel";
+import Cart from "@/components/Cart";
+import SearchBar from "@/components/SearchBar";
+import { getCategories, getProducts, searchProducts } from "@/lib/api";
 import type { Product } from "@/types/product";
 
-export default async function Home() {
-  const [data, categories] = await Promise.all([getProducts(), getCategories()]);
+type HomeProps = {
+  searchParams: Promise<{ q?: string }>;
+};
+
+export default async function Home({ searchParams }: HomeProps) {
+  const { q } = await searchParams;
+  const query = q?.trim() ?? "";
+  const [data, categories] = await Promise.all([
+    query ? searchProducts(query) : getProducts(),
+    getCategories(),
+  ]);
 
   return (
     <main style={{ padding: "40px" }}>
-      <h1>Product Comparison</h1>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px", flexWrap: "wrap", marginBottom: "24px" }}>
+        <h1>Product Comparison</h1>
+        <AuthPanel />
+      </header>
+
+      <SearchBar initialQuery={query} />
 
       <AddProductForm categories={categories} />
 
-      {data.map((product: Product) => (
-        <div
-          key={product.id}
-          style={{
-            border: "1px solid #ccc",
-            padding: "20px",
-            marginTop: "20px",
-            borderRadius: "8px",
-          }}
-        >
-          <h2>{product.name}</h2>
+      <h2>{query ? `Search results for "${query}"` : "All products"}</h2>
 
-          <p>
-            <strong>Category:</strong> {product.category?.name ?? "Uncategorized"}
-          </p>
-
-          <p>
-            <strong>Brand:</strong> {product.brand ?? "-"}
-          </p>
-
-          <h3>Specifications</h3>
-
-          <ul>
-            {product.specifications.map((specification) => (
-                <li key={specification.id}>
-                  <strong>{specification.specification_name}:</strong>{" "}
-                  {specification.specification_value}
-                </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <Cart products={data as Product[]} />
     </main>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -10,9 +10,23 @@ import type { Category } from "@/types/product";
 const specificationFields: Record<string, string[]> = {
   laptop: ["CPU", "RAM", "Storage", "Display", "GPU", "Battery"],
   gpu: ["VRAM", "CUDA Cores / Stream Processors", "Memory Type", "Memory Bus", "Base Clock", "Boost Clock"],
+  earphone: ["Driver Size", "Connectivity", "Microphone", "Battery Life", "Noise Cancellation", "Water Resistance"],
+  headphones: ["Driver Size", "Connectivity", "Microphone", "Battery Life", "Noise Cancellation", "Water Resistance"],
+  mobile: ["Processor", "RAM", "Storage", "Display", "Battery", "Camera"],
+  mobiles: ["Processor", "RAM", "Storage", "Display", "Battery", "Camera"],
   phone: ["Processor", "RAM", "Storage", "Display", "Battery", "Camera"],
   smartphone: ["Processor", "RAM", "Storage", "Display", "Battery", "Camera"],
+  tablet: ["Processor", "RAM", "Storage", "Display", "Battery", "Camera"],
+  cpu: ["Socket", "Cores", "Threads", "Base Clock", "Boost Clock", "TDP"],
   monitor: ["Display Size", "Resolution", "Refresh Rate", "Panel Type", "Response Time", "Ports"],
+  keyboard: ["Layout", "Switch Type", "Connectivity", "Backlight", "Polling Rate", "Compatibility"],
+  mouse: ["Sensor", "DPI", "Connectivity", "Buttons", "Polling Rate", "Compatibility"],
+  smartwatch: ["Display", "Battery Life", "Water Resistance", "Connectivity", "Sensors", "Compatibility"],
+  camera: ["Sensor", "Resolution", "Lens Mount", "Video Resolution", "ISO Range", "Connectivity"],
+  router: ["Wi-Fi Standard", "Speed", "Bands", "Coverage", "Ports", "Security"],
+  printer: ["Print Technology", "Print Speed", "Resolution", "Connectivity", "Duplex", "Supported Paper"],
+  television: ["Screen Size", "Resolution", "Panel Type", "Refresh Rate", "Smart Platform", "Connectivity"],
+  storage: ["Capacity", "Type", "Interface", "Read Speed", "Write Speed", "Form Factor"],
 };
 
 function getFieldsForCategory(categoryName: string) {
@@ -28,6 +42,17 @@ export default function AddProductForm({ categories }: { categories: Category[] 
   const [specifications, setSpecifications] = useState<Record<string, string>>({});
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSeller, setIsSeller] = useState(false);
+
+  useEffect(() => {
+    const updateRole = () => {
+      const storedUser = window.localStorage.getItem("auth_user");
+      setIsSeller(storedUser ? JSON.parse(storedUser).role === "seller" : false);
+    };
+    updateRole();
+    window.addEventListener("auth-changed", updateRole);
+    return () => window.removeEventListener("auth-changed", updateRole);
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -69,6 +94,8 @@ export default function AddProductForm({ categories }: { categories: Category[] 
 
   const selectedCategory = categories.find((category) => String(category.id) === categoryId);
   const fields = selectedCategory ? getFieldsForCategory(selectedCategory.name) : [];
+
+  if (!isSeller) return null;
 
   return (
     <form onSubmit={handleSubmit} style={styles.form}>

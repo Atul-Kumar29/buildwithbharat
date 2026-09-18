@@ -1,9 +1,12 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.core.auth import require_role
 from app.core.database import get_db
+from app.models.user import User
 from app.models.specification import ProductSpecification
 from app.schemas.specification import ProductSpecificationResponse, SpecificationCreate
+from app.services.cache_service import delete, delete_pattern
 
 router = APIRouter(prefix="/api/products", tags=["Product Specifications"])
 
@@ -12,7 +15,8 @@ router = APIRouter(prefix="/api/products", tags=["Product Specifications"])
 def create_product_specification(
     product_id: int,
     specification: SpecificationCreate,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    seller: User = Depends(require_role("seller")),
 ):
     new_specification = ProductSpecification(
         product_id=product_id,
@@ -21,6 +25,10 @@ def create_product_specification(
     db.add(new_specification)
     db.commit()
     db.refresh(new_specification)
+    delete(f"products:{product_id}")
+    delete("products:list")
+    delete_pattern("search:products:*")
+    delete_pattern(f"comparison:{product_id}:*")
     return new_specification
 
 

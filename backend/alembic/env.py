@@ -5,6 +5,11 @@ from app.models.category import Category
 from app.models.listing import Listing
 from app.models.source import Source
 from app.models.specification import ListingSpecification, ProductSpecification
+from app.models.user import User
+from app.models.cart import CartItem
+from app.models.review import Review
+from app.models.order import Order
+from app.models.verification import FeatureVerification
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 from dotenv import load_dotenv

@@ -1,15 +1,14 @@
 from pydantic import BaseModel
 
 
-class SpecificationMedian(BaseModel):
+class SellerSpecification(BaseModel):
     specification_name: str
-    median_value: float
-    unit: str | None = None
+    specification_value: str
 
 
 class SpecificationMode(BaseModel):
     specification_name: str
-    mode_values: list[str]
+    mode_value: str | None = None
     frequency: int
 
 
@@ -18,9 +17,17 @@ class ManufacturerSpecification(BaseModel):
     specification_value: str
 
 
+class SellerListing(BaseModel):
+    listing_id: int
+    seller_name: str | None = None
+    source: str
+    specifications: list[SellerSpecification]
+
+
 class ComparisonResponse(BaseModel):
     product_id: int
     current_listing_id: int | None
-    seller_specifications: list[SpecificationMedian]
+    seller_listings: list[SellerListing]
     seller_modes: list[SpecificationMode]
     manufacturer_specifications: list[ManufacturerSpecification]
+    discrepancies: list[str]
