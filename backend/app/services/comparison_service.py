@@ -1,11 +1,9 @@
 from sqlalchemy.orm import Session
 
 from app.models.listing import Listing
-from app.models.specification import (
-    ListingSpecification,
-    ProductSpecification,
-)
+from app.models.specification import ProductSpecification
 from app.services.median_service import calculate_medians
+from app.services.mode_service import calculate_modes
 
 
 def get_product_comparison(
@@ -29,7 +27,11 @@ def get_product_comparison(
     for listing in listings:
         specifications.extend(listing.specifications)
 
+    # Numeric specifications
     seller_medians = calculate_medians(specifications)
+
+    # Most frequently reported specifications
+    seller_modes = calculate_modes(specifications)
 
     manufacturer_specs = db.query(ProductSpecification).filter(
         ProductSpecification.product_id == product_id
@@ -47,5 +49,6 @@ def get_product_comparison(
         "product_id": product_id,
         "current_listing_id": current_listing_id,
         "seller_specifications": seller_medians,
+        "seller_modes": seller_modes,
         "manufacturer_specifications": manufacturer_data,
     }
