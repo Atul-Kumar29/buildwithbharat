@@ -1,0 +1,19 @@
+{
+  "urls": [
+    {
+      "url": "https://store.arduino.cc/products/uno-r4-wifi",
+      "source_type": "manufacturer",
+      "seller_name": null
+    },
+    {
+      "url": "https://www.gigaparts.com/arduino-uno-r4-wifi-abx00087.html",
+      "source_type": "seller",
+      "seller_name": "GigaParts"
+    },
+    {
+      "url": "https://www.lcsc.com/product-detail/C22392564.html",
+      "source_type": "seller",
+      "seller_name": "LCSC"
+    }
+  ]
+}

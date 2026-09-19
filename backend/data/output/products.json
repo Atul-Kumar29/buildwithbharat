@@ -1,0 +1,400 @@
+[
+  {
+    "product_name": "Arduino\u00ae UNO R4 WiFi",
+    "brand": "Arduino",
+    "model_number": null,
+    "source_type": "manufacturer",
+    "seller_name": null,
+    "price": 30.5,
+    "currency": "EUR",
+    "product_url": "https://store.arduino.cc/products/uno-r4-wifi",
+    "image_url": "https://store.arduino.cc/cdn/shop/files/ABX00087_00.front.jpg?crop=center&height=1024&v=1749566714&width=1024",
+    "specifications": {
+      "board": {
+        "raw_value": "Arduino\u00ae UNO R4 WiFi",
+        "normalized_value": "Arduino\u00ae UNO R4 WiFi"
+      },
+      "sku": {
+        "raw_value": "ABX00087",
+        "normalized_value": "ABX00087"
+      },
+      "microcontroller": {
+        "raw_value": "Renesas RA4M1 (Arm\u00ae Cortex\u00ae-M4)",
+        "normalized_value": "Renesas RA4M1 (Arm\u00ae Cortex\u00ae-M4)"
+      },
+      "usb_c": {
+        "raw_value": "Programming Port",
+        "normalized_value": "Programming Port"
+      },
+      "digital_io_pins": {
+        "raw_value": "14",
+        "normalized_value": "14"
+      },
+      "analog_input_pins": {
+        "raw_value": "6",
+        "normalized_value": "6"
+      },
+      "dac": {
+        "raw_value": "1",
+        "normalized_value": "1"
+      },
+      "pwm_pins": {
+        "raw_value": "6",
+        "normalized_value": "6"
+      },
+      "uart": {
+        "raw_value": "Yes, 1x",
+        "normalized_value": "Yes, 1x"
+      },
+      "i2c": {
+        "raw_value": "Yes, 1x",
+        "normalized_value": "Yes, 1x"
+      },
+      "spi": {
+        "raw_value": "Yes, 1x",
+        "normalized_value": "Yes, 1x"
+      },
+      "can": {
+        "raw_value": "Yes 1 CAN Bus",
+        "normalized_value": "Yes 1 CAN Bus"
+      },
+      "circuit_operating_voltage": {
+        "raw_value": "5 V (ESP32-S3 is 3.3 V)",
+        "normalized_value": "5 V (ESP32-S3 is 3.3 V)"
+      },
+      "input_voltage_vin": {
+        "raw_value": "6-24 V",
+        "normalized_value": "6-24 V"
+      },
+      "dc_current_per_io_pin": {
+        "raw_value": "8 mA",
+        "normalized_value": "8 mA"
+      },
+      "main_core": {
+        "raw_value": "48 MHz",
+        "normalized_value": "48 MHz"
+      },
+      "esp32_s3": {
+        "raw_value": "up to 240 MHz",
+        "normalized_value": "up to 240 MHz"
+      },
+      "ra4m1": {
+        "raw_value": "256 kB Flash, 32 kB RAM",
+        "normalized_value": "256 kB Flash, 32 kB RAM"
+      },
+      "width": {
+        "raw_value": "68.85 mm",
+        "normalized_value": "68.85 mm"
+      },
+      "length": {
+        "raw_value": "53.34 mm",
+        "normalized_value": "53.34 mm"
+      },
+      "hardware_compatibility_with_uno_form_factor": {
+        "raw_value": "The UNO R4 WiFi maintains the same form factor, pinout, and 5 V operating voltage as its predecessor, the UNO R3, ensuring a seamless transition for existing shields and projects.",
+        "normalized_value": "The UNO R4 WiFi maintains the same form factor, pinout, and 5 V operating voltage as its predecessor, the UNO R3, ensuring a seamless transition for existing shields and projects."
+      },
+      "expanded_memory_and_faster_clock": {
+        "raw_value": "The UNO R4 WiFi boasts increased memory and a faster clock speed, enabling more precise calculations and effortless handling of complex projects.",
+        "normalized_value": "The UNO R4 WiFi boasts increased memory and a faster clock speed, enabling more precise calculations and effortless handling of complex projects."
+      },
+      "extra_on_board_peripherals": {
+        "raw_value": "The UNO R4 WiFi introduces a range of on-board peripherals, including a 12-bit DAC, CAN BUS, and OP AMP, providing expanded capabilities and design flexibility.",
+        "normalized_value": "The UNO R4 WiFi introduces a range of on-board peripherals, including a 12-bit DAC, CAN BUS, and OP AMP, providing expanded capabilities and design flexibility."
+      },
+      "extended_24_v_tolerance": {
+        "raw_value": "The UNO R4 WiFi supports a wider input voltage range, allowing seamless integration with motors, LED strips, and other actuators using a single power source.",
+        "normalized_value": "The UNO R4 WiFi supports a wider input voltage range, allowing seamless integration with motors, LED strips, and other actuators using a single power source."
+      },
+      "hid_support": {
+        "raw_value": "With built-in HID support, the UNO R4 WiFi can simulate a mouse or keyboard when connected to a computer via USB, making it easy to send keystrokes and mouse movements.",
+        "normalized_value": "With built-in HID support, the UNO R4 WiFi can simulate a mouse or keyboard when connected to a computer via USB, making it easy to send keystrokes and mouse movements."
+      },
+      "wi_fi_and_bluetooth": {
+        "raw_value": "The UNO R4 WiFi hosts an ESP32-S3 module, enabling makers to add wireless connectivity to their projects. Combined with the Arduino IoT Cloud, makers can monitor and control their projects remotely.",
+        "normalized_value": "The UNO R4 WiFi hosts an ESP32-S3 module, enabling makers to add wireless connectivity to their projects. Combined with the Arduino IoT Cloud, makers can monitor and control their projects remotely."
+      },
+      "qwiic_connector": {
+        "raw_value": "The UNO R4 WiFi features a Qwiic I2C connector, allowing easy connection to nodes from the extensive Qwiic ecosystem. Adapter cables also enable compatibility with sensors and actuators based on other connectors.",
+        "normalized_value": "The UNO R4 WiFi features a Qwiic I2C connector, allowing easy connection to nodes from the extensive Qwiic ecosystem. Adapter cables also enable compatibility with sensors and actuators based on other connectors."
+      },
+      "support_for_battery_powered_rtc": {
+        "raw_value": "The UNO R4 WiFi includes additional pins, including an \"OFF\" pin to turn off the board and a \"VRTC\" pin to keep the internal Real-Time Clock powered and running.",
+        "normalized_value": "The UNO R4 WiFi includes additional pins, including an \"OFF\" pin to turn off the board and a \"VRTC\" pin to keep the internal Real-Time Clock powered and running."
+      },
+      "led_matrix": {
+        "raw_value": "The UNO R4 WiFi incorporates a bright 12x8 red LED matrix, ideal for creative projects with animations or plotting sensor data, eliminating the need for additional hardware.",
+        "normalized_value": "The UNO R4 WiFi incorporates a bright 12x8 red LED matrix, ideal for creative projects with animations or plotting sensor data, eliminating the need for additional hardware."
+      },
+      "diagnostics_for_runtime_errors": {
+        "raw_value": "The UNO R4 WiFi includes an error-catching mechanism that detects runtime crashes and provides detailed explanations and hints about the code line causing the crash.",
+        "normalized_value": "The UNO R4 WiFi includes an error-catching mechanism that detects runtime crashes and provides detailed explanations and hints about the code line causing the crash."
+      }
+    },
+    "scraped_at": "2026-09-19T17:56:41.592210+00:00",
+    "sku": "ABX00087",
+    "mpn": null,
+    "gtin": "7630049204591",
+    "error": null
+  },
+  {
+    "product_name": "Arduino Uno R4 Wifi - ABX00087",
+    "brand": "Arduino",
+    "model_number": "ABX00087",
+    "source_type": "seller",
+    "seller_name": "GigaParts",
+    "price": 32.99,
+    "currency": "USD",
+    "product_url": "https://www.gigaparts.com/arduino-uno-r4-wifi-abx00087.html",
+    "image_url": "https://www.gigaparts.com/media/catalog/product/cache/5a6165e5f2c5c330866b923e356bed71/a/b/abx00087_00.front_643x483_jpg.jpg",
+    "specifications": {
+      "board_name": {
+        "raw_value": "Arduino\u00ae UNO R4 WiFi",
+        "normalized_value": "Arduino\u00ae UNO R4 WiFi"
+      },
+      "sku": {
+        "raw_value": "ABX00087",
+        "normalized_value": "ABX00087"
+      },
+      "microcontroller": {
+        "raw_value": "Renesas RA4M1 (Arm\u00ae Cortex\u00ae-M4)",
+        "normalized_value": "Renesas RA4M1 (Arm\u00ae Cortex\u00ae-M4)"
+      },
+      "usb": {
+        "raw_value": "USB-C\u00ae",
+        "normalized_value": "USB-C\u00ae"
+      },
+      "programming_port": {
+        "raw_value": "Pins",
+        "normalized_value": "Pins"
+      },
+      "digital_io_pins": {
+        "raw_value": "14",
+        "normalized_value": "14"
+      },
+      "analog_input_pins": {
+        "raw_value": "6",
+        "normalized_value": "6"
+      },
+      "dac": {
+        "raw_value": "1",
+        "normalized_value": "1"
+      },
+      "pwm_pins": {
+        "raw_value": "6",
+        "normalized_value": "6"
+      },
+      "uart": {
+        "raw_value": "Yes, 1x",
+        "normalized_value": "Yes, 1x"
+      },
+      "i2c": {
+        "raw_value": "Yes, 1x",
+        "normalized_value": "Yes, 1x"
+      },
+      "spi": {
+        "raw_value": "Yes, 1x",
+        "normalized_value": "Yes, 1x"
+      },
+      "can": {
+        "raw_value": "Yes 1 CAN Bus",
+        "normalized_value": "Yes 1 CAN Bus"
+      },
+      "circuit_operating_voltage": {
+        "raw_value": "5 V (ESP32-S3 is 3.3 V)",
+        "normalized_value": "5 V (ESP32-S3 is 3.3 V)"
+      },
+      "input_voltage_vin": {
+        "raw_value": "6-24 VDC",
+        "normalized_value": "6-24 VDC"
+      },
+      "current_per_io_pin": {
+        "raw_value": "8 mA",
+        "normalized_value": "8 mA"
+      },
+      "clock_speed": {
+        "raw_value": "Main core 48 MHz ESP32-S3 up to 240 MHz",
+        "normalized_value": "Main core 48 MHz ESP32-S3 up to 240 MHz"
+      },
+      "memory": {
+        "raw_value": "RA4M1 256 kB Flash, 32 kB RAM ESP32-S3 384 kB ROM, 512 kB SRAM",
+        "normalized_value": "RA4M1 256 kB Flash, 32 kB RAM ESP32-S3 384 kB ROM, 512 kB SRAM"
+      },
+      "width": {
+        "raw_value": "68.85 mm",
+        "normalized_value": "68.85 mm"
+      },
+      "length": {
+        "raw_value": "53.34 mm",
+        "normalized_value": "53.34 mm"
+      },
+      "hardware_compatibility_with_uno_form_factor": {
+        "raw_value": "The UNO R4 WiFi maintains the same form factor, pinout, and 5 V operating voltage as its predecessor, the UNO R3, ensuring a seamless transition for existing shields and projects.",
+        "normalized_value": "The UNO R4 WiFi maintains the same form factor, pinout, and 5 V operating voltage as its predecessor, the UNO R3, ensuring a seamless transition for existing shields and projects."
+      },
+      "expanded_memory_and_faster_clock": {
+        "raw_value": "The UNO R4 WiFi boasts increased memory and a faster clock speed, enabling more precise calculations and effortless handling of complex projects.",
+        "normalized_value": "The UNO R4 WiFi boasts increased memory and a faster clock speed, enabling more precise calculations and effortless handling of complex projects."
+      },
+      "extra_on_board_peripherals": {
+        "raw_value": "The UNO R4 WiFi introduces a range of on-board peripherals, including a 12-bit DAC, CAN BUS, and OP AMP, providing expanded capabilities and design flexibility.",
+        "normalized_value": "The UNO R4 WiFi introduces a range of on-board peripherals, including a 12-bit DAC, CAN BUS, and OP AMP, providing expanded capabilities and design flexibility."
+      },
+      "extended_24_v_tolerance": {
+        "raw_value": "The UNO R4 WiFi supports a wider input voltage range, allowing seamless integration with motors, LED strips, and other actuators using a single power source.",
+        "normalized_value": "The UNO R4 WiFi supports a wider input voltage range, allowing seamless integration with motors, LED strips, and other actuators using a single power source."
+      },
+      "hid_support": {
+        "raw_value": "With built-in HID support, the UNO R4 WiFi can simulate a mouse or keyboard when connected to a computer via USB, making it easy to send keystrokes and mouse movements.",
+        "normalized_value": "With built-in HID support, the UNO R4 WiFi can simulate a mouse or keyboard when connected to a computer via USB, making it easy to send keystrokes and mouse movements."
+      },
+      "wi_fi_and_bluetooth": {
+        "raw_value": "The UNO R4 WiFi hosts an ESP32-S3 module, enabling makers to add wireless connectivity to their projects. Combined with the Arduino IoT Cloud, makers can monitor and control their projects remotely.",
+        "normalized_value": "The UNO R4 WiFi hosts an ESP32-S3 module, enabling makers to add wireless connectivity to their projects. Combined with the Arduino IoT Cloud, makers can monitor and control their projects remotely."
+      },
+      "qwiic_connector": {
+        "raw_value": "The UNO R4 WiFi features a Qwiic I2C connector, allowing easy connection to nodes from the extensive Qwiic ecosystem. Adapter cables also enable compatibility with sensors and actuators based on other connectors.",
+        "normalized_value": "The UNO R4 WiFi features a Qwiic I2C connector, allowing easy connection to nodes from the extensive Qwiic ecosystem. Adapter cables also enable compatibility with sensors and actuators based on other connectors."
+      },
+      "support_for_battery_powered_rtc": {
+        "raw_value": "The UNO R4 WiFi includes additional pins, including an \"OFF\" pin to turn off the board and a \"VRTC\" pin to keep the internal Real-Time Clock powered and running.",
+        "normalized_value": "The UNO R4 WiFi includes additional pins, including an \"OFF\" pin to turn off the board and a \"VRTC\" pin to keep the internal Real-Time Clock powered and running."
+      },
+      "led_matrix": {
+        "raw_value": "The UNO R4 WiFi incorporates a bright 12x8 red LED matrix, ideal for creative projects with animations or plotting sensor data, eliminating the need for additional hardware.",
+        "normalized_value": "The UNO R4 WiFi incorporates a bright 12x8 red LED matrix, ideal for creative projects with animations or plotting sensor data, eliminating the need for additional hardware."
+      },
+      "diagnostics_for_runtime_errors": {
+        "raw_value": "The UNO R4 WiFi includes an error-catching mechanism that detects runtime crashes and provides detailed explanations and hints about the code line causing the crash.",
+        "normalized_value": "The UNO R4 WiFi includes an error-catching mechanism that detects runtime crashes and provides detailed explanations and hints about the code line causing the crash."
+      }
+    },
+    "scraped_at": "2026-09-19T17:56:43.844139+00:00",
+    "sku": "PB0596",
+    "mpn": "ABX00087",
+    "gtin": "7630049204591",
+    "error": null
+  },
+  {
+    "product_name": "Arduino ABX00087",
+    "brand": "Arduino",
+    "model_number": "ABX00087",
+    "source_type": "seller",
+    "seller_name": "LCSC",
+    "price": 34.5148,
+    "currency": "USD",
+    "product_url": "https://www.lcsc.com/product-detail/C22392564.html",
+    "image_url": "https://assets.lcsc.com/images/lcsc/900x900/20240605_Arduino-ABX00087_C22392564_front.jpg",
+    "specifications": {
+      "manufacturer": {
+        "raw_value": "Arduino",
+        "normalized_value": "Arduino"
+      },
+      "mpn": {
+        "raw_value": "ABX00087",
+        "normalized_value": "ABX00087"
+      },
+      "lcsc_part": {
+        "raw_value": "C22392564",
+        "normalized_value": "C22392564"
+      },
+      "packaging": {
+        "raw_value": "-",
+        "normalized_value": "-"
+      },
+      "key_attributes": {
+        "raw_value": "UNO R4 WiFi 32-bit Microcontroller with Wi-Fi",
+        "normalized_value": "UNO R4 WiFi 32-bit Microcontroller with Wi-Fi"
+      },
+      "datasheet": {
+        "raw_value": "Arduino ABX00087",
+        "normalized_value": "Arduino ABX00087"
+      },
+      "category": {
+        "raw_value": "Development Boards, Kits, Programmers/Evaluation Boards/RF, RFID, Wireless Evaluation Boards",
+        "normalized_value": "Development Boards, Kits, Programmers/Evaluation Boards/RF, RFID, Wireless Evaluation Boards"
+      },
+      "frequency_range": {
+        "raw_value": "2.4GHz",
+        "normalized_value": "2.4GHz"
+      },
+      "antenna_type": {
+        "raw_value": "On-board PCB Antenna",
+        "normalized_value": "On-board PCB Antenna"
+      },
+      "features": {
+        "raw_value": "Integrated Bluetooth function",
+        "normalized_value": "Integrated Bluetooth function"
+      },
+      "utilized_ic_part": {
+        "raw_value": "ESP32-S3",
+        "normalized_value": "ESP32-S3"
+      },
+      "operating_temperature": {
+        "raw_value": "-40\u2103~+85\u2103",
+        "normalized_value": "-40\u2103~+85\u2103"
+      },
+      "voltage_supply": {
+        "raw_value": "6V~24V",
+        "normalized_value": "6V~24V"
+      },
+      "interface": {
+        "raw_value": "UART;SPI;I2C",
+        "normalized_value": "UART;SPI;I2C"
+      },
+      "35_3714": {
+        "raw_value": "$ 35.37",
+        "normalized_value": "$ 35.37"
+      },
+      "34_5148": {
+        "raw_value": "$ 345.15",
+        "normalized_value": "$ 345.15"
+      },
+      "rohs": {
+        "raw_value": "ROHS Compliant",
+        "normalized_value": "ROHS Compliant"
+      },
+      "eccn": {
+        "raw_value": "5A992C",
+        "normalized_value": "5A992C"
+      },
+      "cnhts": {
+        "raw_value": "8517629200",
+        "normalized_value": "8517629200"
+      },
+      "ushts": {
+        "raw_value": "8517620090",
+        "normalized_value": "8517620090"
+      },
+      "taric": {
+        "raw_value": "8517620000",
+        "normalized_value": "8517620000"
+      },
+      "cahts": {
+        "raw_value": "8517620090",
+        "normalized_value": "8517620090"
+      },
+      "brhts": {
+        "raw_value": "85176299",
+        "normalized_value": "85176299"
+      },
+      "inhts": {
+        "raw_value": "85176290",
+        "normalized_value": "85176290"
+      },
+      "mxhts": {
+        "raw_value": "8517.62.99",
+        "normalized_value": "8517.62.99"
+      },
+      "package": {
+        "raw_value": "-",
+        "normalized_value": "-"
+      }
+    },
+    "scraped_at": "2026-09-19T17:56:45.065497+00:00",
+    "sku": "C22392564",
+    "mpn": "ABX00087",
+    "gtin": null,
+    "error": null
+  }
+]
