@@ -1,8 +1,22 @@
 import type { Category, Product } from "@/types/product";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = "http://127.0.0.1:8001";
 
 export type UserRole = "seller" | "buyer";
+
+
+
+export type Listing = {
+  id: number;
+  product_id: number;
+  source_id: number | null;
+  source: string;
+  seller_name: string | null;
+  listing_url: string | null;
+  title: string | null;
+  created_at: string;
+  updated_at: string;
+};
 
 export type AuthUser = {
   id: number;
@@ -214,6 +228,17 @@ export async function createProductSpecification(
 
   if (!response.ok) {
     throw new Error("Failed to create product specification");
+  }
+
+  return response.json();
+}
+export async function getListings(): Promise<Listing[]> {
+  const response = await fetch(`${API_URL}/api/listings/`, {
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch listings");
   }
 
   return response.json();
