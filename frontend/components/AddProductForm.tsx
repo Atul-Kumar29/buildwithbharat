@@ -1,9 +1,8 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { Plus } from "lucide-react";
 import { useRouter } from "next/navigation";
-
+import { PlusIcon } from "@/components/ui/Icons";
 import { createProduct, createProductSpecification } from "@/lib/api";
 import type { Category } from "@/types/product";
 
@@ -83,7 +82,7 @@ export default function AddProductForm({ categories }: { categories: Category[] 
       setBrand("");
       setCategoryId("");
       setSpecifications({});
-      setStatus("Product added.");
+      setStatus("Product added successfully!");
       router.refresh();
     } catch {
       setStatus("Could not add the product.");
@@ -98,148 +97,105 @@ export default function AddProductForm({ categories }: { categories: Category[] 
   if (!isSeller) return null;
 
   return (
-    <form onSubmit={handleSubmit} style={styles.form}>
-      <div>
-        <h2 style={styles.heading}>Add a product</h2>
-        <p style={styles.subheading}>Save a canonical product to compare later.</p>
+    <div className="rounded-xl border border-neutral-300 bg-white p-5 sm:p-6">
+      <div className="mb-4">
+        <h2 className="text-xl font-bold text-neutral-900">Add a Product</h2>
+        <p className="mt-1 text-sm text-neutral-500">Save a canonical product to compare across sellers.</p>
       </div>
 
-      <label style={styles.label}>
-        Product name
-        <input
-          required
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          placeholder="Dell Inspiron 15 3530"
-          style={styles.input}
-        />
-      </label>
-
-      <div style={styles.row}>
-        <label style={styles.label}>
-          Brand
+      <form onSubmit={handleSubmit} className="grid gap-4 max-w-2xl">
+        <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
+          Product name
           <input
-            value={brand}
-            onChange={(event) => setBrand(event.target.value)}
-            placeholder="Dell"
-            style={styles.input}
+            required
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            placeholder="Dell Inspiron 15 3530"
+            className="rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
           />
         </label>
-        <label style={styles.label}>
-          ASIN
-          <input
-            value={asin}
-            onChange={(event) => setAsin(event.target.value)}
-            placeholder="B0..."
-            style={styles.input}
-          />
-        </label>
-      </div>
 
-      <label style={styles.label}>
-        Category
-        <select
-          value={categoryId}
-          onChange={(event) => {
-            setCategoryId(event.target.value);
-            setSpecifications({});
-          }}
-          style={styles.input}
-        >
-          <option value="">No category</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      {fields.length > 0 && (
-        <div style={styles.specificationSection}>
-          <div>
-            <h3 style={styles.specificationHeading}>Product specifications</h3>
-            <p style={styles.subheading}>Add the details available for this product.</p>
-          </div>
-          <div style={styles.specificationGrid}>
-            {fields.map((field) => (
-              <label key={field} style={styles.label}>
-                {field}
-                <input
-                  value={specifications[field] ?? ""}
-                  onChange={(event) =>
-                    setSpecifications((current) => ({
-                      ...current,
-                      [field]: event.target.value,
-                    }))
-                  }
-                  placeholder={`Enter ${field.toLowerCase()}`}
-                  style={styles.input}
-                />
-              </label>
-            ))}
-          </div>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
+            Brand
+            <input
+              value={brand}
+              onChange={(event) => setBrand(event.target.value)}
+              placeholder="Dell"
+              className="rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+            />
+          </label>
+          <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
+            ASIN
+            <input
+              value={asin}
+              onChange={(event) => setAsin(event.target.value)}
+              placeholder="B0..."
+              className="rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+            />
+          </label>
         </div>
-      )}
 
-      <div style={styles.footer}>
-        <button type="submit" disabled={isSubmitting} style={styles.button}>
-          <Plus size={17} aria-hidden="true" />
-          {isSubmitting ? "Adding..." : "Add product"}
-        </button>
-        {status && <span role="status" style={styles.status}>{status}</span>}
-      </div>
-    </form>
+        <label className="grid gap-1.5 text-sm font-medium text-neutral-700">
+          Category
+          <select
+            value={categoryId}
+            onChange={(event) => {
+              setCategoryId(event.target.value);
+              setSpecifications({});
+            }}
+            className="rounded-lg border border-neutral-300 px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-400"
+          >
+            <option value="">No category</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        {fields.length > 0 && (
+          <div className="mt-2 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
+            <h3 className="text-sm font-bold text-neutral-900 mb-1">Product Specifications</h3>
+            <p className="text-xs text-neutral-500 mb-3">Add the details available for this product.</p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {fields.map((field) => (
+                <label key={field} className="grid gap-1 text-sm font-medium text-neutral-700">
+                  {field}
+                  <input
+                    value={specifications[field] ?? ""}
+                    onChange={(event) =>
+                      setSpecifications((current) => ({
+                        ...current,
+                        [field]: event.target.value,
+                      }))
+                    }
+                    placeholder={`Enter ${field.toLowerCase()}`}
+                    className="rounded-lg border border-neutral-300 px-3 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+                  />
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center gap-3 pt-2">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="inline-flex items-center gap-2 rounded-lg bg-teal-400 px-5 py-2.5 text-sm font-bold text-slate-900 hover:bg-teal-300 disabled:opacity-50 transition-colors"
+          >
+            <PlusIcon className="h-4 w-4" />
+            {isSubmitting ? "Adding..." : "Add product"}
+          </button>
+          {status && (
+            <span role="status" className={`text-sm ${status.includes("success") ? "text-emerald-600" : "text-red-600"}`}>
+              {status}
+            </span>
+          )}
+        </div>
+      </form>
+    </div>
   );
 }
-
-const styles = {
-  form: {
-    display: "grid",
-    gap: "16px",
-    padding: "24px",
-    border: "1px solid #d8dee9",
-    borderRadius: "8px",
-    background: "#f8fafc",
-  },
-  heading: { margin: 0, fontSize: "24px" },
-  subheading: { margin: "6px 0 0", color: "#52606d" },
-  row: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" },
-  specificationSection: {
-    display: "grid",
-    gap: "14px",
-    paddingTop: "4px",
-  },
-  specificationHeading: { margin: 0, fontSize: "18px" },
-  specificationGrid: {
-    display: "grid",
-    gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-    gap: "16px",
-  },
-  label: { display: "grid", gap: "7px", fontWeight: 600 },
-  input: {
-    width: "100%",
-    boxSizing: "border-box" as const,
-    padding: "10px 12px",
-    border: "1px solid #b8c2cc",
-    borderRadius: "5px",
-    background: "white",
-    font: "inherit",
-    fontWeight: 400,
-  },
-  footer: { display: "flex", alignItems: "center", gap: "14px" },
-  button: {
-    display: "inline-flex",
-    alignItems: "center",
-    gap: "7px",
-    padding: "10px 15px",
-    border: 0,
-    borderRadius: "5px",
-    background: "#162b4d",
-    color: "white",
-    cursor: "pointer",
-    font: "inherit",
-    fontWeight: 700,
-  },
-  status: { color: "#52606d" },
-};
