@@ -10,10 +10,13 @@ from app.api.cart import router as cart_router
 from app.api.reviews import router as reviews_router
 from app.api.orders import router as orders_router
 from app.api import search
+from app.api.manufacturer_specifications import router as manufacturer_specifications_router
 
 app = FastAPI(title="Product Comparison API")
 
+
 # Allow Next.js frontend to call this API
+app.include_router(manufacturer_specifications_router)
 app.include_router(search.router)
 app.include_router(auth_router)
 app.include_router(cart_router)
@@ -26,7 +29,8 @@ app.include_router(specifications_router)
 app.include_router(comparison_router)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3001"],
+    allow_origins=["http://localhost:3001",
+                   "http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -59,23 +59,29 @@ export default function AddProductForm({ categories }: { categories: Category[] 
     setStatus("");
 
     try {
-      const product = await createProduct({
-        name,
-        asin: asin || undefined,
-        brand: brand || undefined,
-        category_id: categoryId ? Number(categoryId) : null,
-      });
+      const result = await createProduct({
+  name,
+  asin: asin || undefined,
+  brand: brand || undefined,
+  category_id: categoryId ? Number(categoryId) : null,
+});
 
-      await Promise.all(
-        Object.entries(specifications)
-          .filter(([, value]) => value.trim())
-          .map(([specification_name, specification_value]) =>
-            createProductSpecification(product.id, {
-              specification_name,
-              specification_value: specification_value.trim(),
-            })
-          )
-      );
+  if (result.created) {
+    await Promise.all(
+      Object.entries(specifications)
+        .filter(([, value]) => value.trim())
+        .map(([specification_name, specification_value]) =>
+          createProductSpecification(result.product.id, {
+            specification_name,
+            specification_value: specification_value.trim(),
+          })
+        )
+    );
+
+        setStatus("Product added successfully!");
+      } else {
+        setStatus("Product already exists. Existing product was used.");
+      }
 
       setName("");
       setAsin("");

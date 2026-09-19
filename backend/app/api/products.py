@@ -7,7 +7,7 @@ from app.core.database import get_db
 from app.models.category import Category
 from app.models.product import Product
 from app.models.user import User
-from app.schemas.product import ProductCreate,ProductResponse
+from app.schemas.product import ProductCreate, ProductResponse, ProductCreateResponse
 from app.services.cache_service import delete, delete_pattern, get_json, set_json
 
 router=APIRouter(
@@ -16,21 +16,40 @@ router=APIRouter(
 
 )
 
-@router.post("/",response_model=ProductResponse)
+@router.post("/", response_model=ProductCreateResponse)
 def create_product(
-    product:ProductCreate,
-    db:Session=Depends(get_db),
+    product: ProductCreate,
+    db: Session = Depends(get_db),
     seller: User = Depends(require_role("seller")),
 ):
     if product.category_id is not None:
         category = db.query(Category).filter_by(id=product.category_id).first()
+
         if category is None or category.name.strip().lower() not in ELECTRONICS_CATEGORIES:
-            raise HTTPException(status_code=400, detail="Only approved electronics categories are supported")
-    new_product=Product(
+            raise HTTPException(
+                status_code=400,
+                detail="Only approved electronics categories are supported",
+            )
+
+    # Check whether this ASIN already exists
+    if product.asin:
+        existing_product = (
+            db.query(Product)
+            .filter(Product.asin == product.asin)
+            .first()
+        )
+
+        if existing_product:
+            return ProductCreateResponse(
+                product=existing_product,
+                created=False,
+            )
+
+    new_product = Product(
         name=product.name,
         asin=product.asin,
         brand=product.brand,
-        category_id=product.category_id
+        category_id=product.category_id,
     )
 
     db.add(new_product)
@@ -40,7 +59,11 @@ def create_product(
     delete("products:list")
     delete_pattern("search:products:*")
 
-    return new_product
+    return ProductCreateResponse(
+        product=new_product,
+        created=True,
+    )
+
 
 @router.get("/",response_model=list[ProductResponse])
 def get_product(

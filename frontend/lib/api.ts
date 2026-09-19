@@ -30,6 +30,18 @@ export type AuthResponse = {
   user: AuthUser;
 };
 
+export type ListingSpecification = {
+  id: number;
+  listing_id: number;
+  specification_name: string;
+  specification_value: string;
+};
+
+export type CreateProductResponse = {
+  product: Product;
+  created: boolean;
+};
+
 export async function authenticate(
   mode: "login" | "register",
   credentials: { email: string; password: string; role?: UserRole }
@@ -196,12 +208,12 @@ export async function createProduct(product: {
   asin?: string;
   brand?: string;
   category_id?: number | null;
-}) {
+}): Promise<CreateProductResponse> {
   const response = await fetch(`${API_URL}/api/products/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(getAuthToken() ? { Authorization: `Bearer ${getAuthToken()}` } : {}),
+      ...authHeaders(),
     },
     body: JSON.stringify(product),
   });
@@ -243,3 +255,48 @@ export async function getListings(): Promise<Listing[]> {
 
   return response.json();
 }
+
+export async function createListingSpecification(
+  listingId: number,
+  specification: {
+    specification_name: string;
+    specification_value: string;
+  }
+): Promise<ListingSpecification> {
+  const response = await fetch(
+    `${API_URL}/api/listings/${listingId}/specifications`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...authHeaders(),
+      },
+      body: JSON.stringify(specification),
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to create listing specification");
+  }
+
+  return response.json();
+}
+
+export async function getListingSpecifications(
+  listingId: number
+): Promise<ListingSpecification[]> {
+  const response = await fetch(
+    `${API_URL}/api/listings/${listingId}/specifications`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch listing specifications");
+  }
+
+  return response.json();
+}
+
+

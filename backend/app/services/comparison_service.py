@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.models.listing import Listing
 from app.models.product import Product
-from app.models.specification import ProductSpecification
+from app.models.manufacturer_specification import ManufacturerSpecification
 
 def normalize_value(value: str) -> str:
     return re.sub(r"\s+", " ", value.strip().lower())
@@ -72,9 +72,11 @@ def get_product_comparison(
         seller_modes.append({"specification_name": name, "mode_value": original_value, "frequency": frequency})
         mode_lookup[name] = mode_value
 
-    manufacturer_specs = [] if not listings else db.query(ProductSpecification).filter(
-        ProductSpecification.product_id == product_id
+    manufacturer_specs = db.query(ManufacturerSpecification).filter(
+        ManufacturerSpecification.product_id == product_id
     ).all()
+
+
 
     manufacturer_data = [
         {

@@ -42,4 +42,10 @@ class Product(Base):
         cascade="all, delete-orphan"
     )
 
+    manufacturer_specifications = relationship(
+    "ManufacturerSpecification",
+    back_populates="product",
+    cascade="all, delete-orphan",
+)
+
     
